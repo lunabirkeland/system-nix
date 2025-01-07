@@ -2,7 +2,7 @@
   stylix = {
     enable = true;
     autoEnable = true;
-    image = ../wallpaper.png;
+    image = ../background.png;
     polarity = "dark";
     base16Scheme = "${pkgs.base16-schemes}/share/themes/catppuccin-mocha.yaml";
     override.base00 = "#000000";

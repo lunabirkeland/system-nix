@@ -9,8 +9,8 @@
     override.base01 = "#000000";
 
     cursor = {
-      name = "graphite-dark";
-      package = pkgs.graphite-cursors;
+      name = "BreezeX-RoséPine";
+      package = pkgs.rose-pine-cursor;
       size = 32;
     };
   };

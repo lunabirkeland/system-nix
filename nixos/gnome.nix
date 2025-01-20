@@ -1,7 +1,7 @@
 {
   config,
   pkgs,
-  username,
+  vars,
   ...
 }: {
   # nixpkgs.overlays = [
@@ -58,10 +58,12 @@
 
   services.displayManager.autoLogin = {
     enable = true;
-    user = username;
+    user = vars.username;
   };
 
   # workaround for autologin issues
   systemd.services."getty@tty1".enable = false;
   systemd.services."autovt@tty1".enable = false;
+
+  programs.dconf.enable = true;
 }

@@ -1,17 +1,10 @@
 {
-  config,
   pkgs,
   lib,
   ...
 }: {
   imports = [
-    ../../modules/base.nix
-    ../../modules/gnome.nix
-    ../../modules/localisation.nix
-    ../../modules/networking.nix
-    ../../modules/nix-ld.nix
-    ../../modules/peripherals.nix
-    ../../modules/stylix.nix
+    ../../nixos
 
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
@@ -32,6 +25,10 @@
   };
 
   networking.hostName = "caudatus";
+
+  # fix wifi issues after sleep
+  # https://wiki.archlinux.org/title/Lenovo_ThinkPad_T14_(AMD)_Gen_4#Unreliable/High_latency
+  networking.networkmanager.wifi.powersave = false;
 
   # enable fingerprint reader support
   services.fprintd = {

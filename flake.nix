@@ -46,35 +46,24 @@
     lanzaboote,
     stylix,
     ...
-  } @ inputs: {
+  } @ inputs: let
+    vars = import ./vars;
+    specialArgs = {inherit inputs vars;};
+  in {
     nixosConfigurations = {
-      caudatus = let
-        username = "luna";
-        specialArgs = {inherit username inputs;};
-      in
-        nixpkgs.lib.nixosSystem {
-          inherit specialArgs;
-          system = "x86_64-linux";
+      caudatus = nixpkgs.lib.nixosSystem {
+        inherit specialArgs;
+        system = "x86_64-linux";
 
-          modules = [
-            nixos-hardware.nixosModules.lenovo-thinkpad-t14s-amd-gen4
-            lanzaboote.nixosModules.lanzaboote
-            ./hosts/caudatus
+        modules = [
+          nixos-hardware.nixosModules.lenovo-thinkpad-t14s-amd-gen4
+          lanzaboote.nixosModules.lanzaboote
+          ./hosts/caudatus
 
-            stylix.nixosModules.stylix
-            home-manager.nixosModules.home-manager
-            {
-              home-manager = {
-                useGlobalPkgs = true;
-                useUserPackages = true;
-                backupFileExtension = "home-manager.backup";
-
-                extraSpecialArgs = specialArgs;
-                users."${username}" = import ./home;
-              };
-            }
-          ];
-        };
+          stylix.nixosModules.stylix
+          home-manager.nixosModules.home-manager
+        ];
+      };
     };
   };
 }

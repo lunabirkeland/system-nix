@@ -1,5 +1,6 @@
 {
   config,
+  inputs,
   pkgs,
   username,
   ...
@@ -9,6 +10,8 @@
 
   programs = {
     gpg.enable = true;
+
+    kitty.enable = true;
 
     zsh = {
       enable = true;
@@ -50,12 +53,6 @@
     };
   };
 
-  services = {
-    easyeffects = {
-      enable = true;
-    };
-  };
-
   home.packages = with pkgs; [
     wget
     curl
@@ -76,6 +73,8 @@
     mpv
     element-desktop
   ];
+
+  services.easyeffects.enable = true;
 
   xdg.configFile."Element/config.json".source =
     pkgs.fetchFromGitHub

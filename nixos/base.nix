@@ -1,7 +1,7 @@
 {
-  config,
+  inputs,
   pkgs,
-  username,
+  vars,
   ...
 }: {
   nixpkgs.config.allowUnfree = true;
@@ -35,14 +35,14 @@
   security.rtkit.enable = true;
 
   programs.zsh.enable = true;
+  programs.adb.enable = true;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users = {
     defaultUserShell = pkgs.zsh;
-    users.${username} = {
+    users.${vars.username} = {
       isNormalUser = true;
-      description = username;
-      extraGroups = ["networkmanager" "wheel" "wireshark" "dialout"];
+      extraGroups = ["networkmanager" "wheel" "wireshark" "dialout" "adbusers"];
     };
   };
 

@@ -1,13 +1,24 @@
 {
+  config,
   lib,
   pkgs,
   ...
 }: {
+  gtk = {
+    enable = true;
+    iconTheme = {
+      name = "Papirus";
+
+      package = pkgs.papirus-icon-theme;
+    };
+  };
+
   # stylix cursor not working well
   home.pointerCursor = lib.mkForce {
-    name = "BreezeX-RoséPine";
+    name = "BreezeX-RosePine-Linux";
     package = pkgs.rose-pine-cursor;
-    size = 32;
+    size = 24;
+
     x11.enable = true;
     gtk.enable = true;
   };

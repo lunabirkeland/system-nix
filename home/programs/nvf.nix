@@ -78,6 +78,8 @@ in {
         relativenumber = true;
         mouse = "a";
         showmode = false;
+        tabstop = 2;
+        shiftwidth = 2;
       };
 
       debugger = {

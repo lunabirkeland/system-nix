@@ -22,6 +22,10 @@
       base0F = "#f2cdcd"; # flamingo
     };
 
+    opacity = {
+      desktop = 0.0;
+    };
+
     polarity = "dark";
     image = ../background.png;
   };

@@ -54,7 +54,10 @@
   environment.systemPackages = with pkgs; [
     gnome-terminal
     gnome-tweaks
+    gnomeExtensions.appindicator
   ];
+
+  services.udev.packages = with pkgs; [gnome.gnome-settings-daemon];
 
   services.displayManager.autoLogin = {
     enable = true;

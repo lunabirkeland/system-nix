@@ -3,8 +3,8 @@
 with lib.hm.gvariant; {
   dconf.settings = {
     "org/gnome/shell" = {
-      enabled-extensions = ["dash-to-dock@micxgx.gmail.com" "user-theme@gnome-shell-extensions.gcampax.github.com"];
       favorite-apps = ["firefox.desktop" "org.gnome.Terminal.desktop"];
+      enabled-extensions = ["user-theme@gnome-shell-extensions.gcampax.github.com" "dash-to-dock@micxgx.gmail.com"];
     };
 
     "org/gnome/shell/extensions/dash-to-dock" = {
@@ -14,6 +14,7 @@ with lib.hm.gvariant; {
       dock-position = "LEFT";
       extend-height = false;
       height-fraction = 0.9;
+      hot-keys = false;
       preferred-monitor = -2;
       preferred-monitor-by-connector = "eDP-1";
       show-mounts = false;

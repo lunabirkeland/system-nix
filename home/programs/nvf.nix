@@ -206,13 +206,24 @@ in {
         toggleterm = {
           enable = true;
           lazygit.enable = true;
+          setupOpts = {
+            direction = "float";
+          };
         };
       };
 
       ui = {
         borders.enable = true;
         noice.enable = true;
-        colorizer.enable = true;
+        colorizer = {
+          enable = true;
+          setupOpts.filetypes = {
+            "*" = {};
+            javascript = {
+              AARRGGBB = false;
+            };
+          };
+        };
         modes-nvim.enable = false; # the theme looks terrible with catppuccin
         illuminate.enable = true;
         breadcrumbs = {

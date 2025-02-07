@@ -1,4 +1,5 @@
 {
+  inputs,
   lib,
   pkgs,
   vars,
@@ -62,6 +63,13 @@
       trusted-public-keys = [
         "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="
       ];
+    };
+    registry."nixpkgs-unfree" = {
+      from = {
+        id = "nixpkgs-unfree";
+        type = "indirect";
+      };
+      flake = inputs.nixpkgs-unfree;
     };
   };
 }

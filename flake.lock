@@ -495,6 +495,26 @@
         "type": "github"
       }
     },
+    "nixpkgs-unfree": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1727984955,
+        "narHash": "sha256-vP3XzXfQLaxy2QYipK5teKFzgWBeSkv9hByCvrMEL1c=",
+        "owner": "numtide",
+        "repo": "nixpkgs-unfree",
+        "rev": "deab889228cedd7bca43e71ea4f61f9ea12c260e",
+        "type": "github"
+      },
+      "original": {
+        "owner": "numtide",
+        "repo": "nixpkgs-unfree",
+        "type": "github"
+      }
+    },
     "nixpkgs_2": {
       "locked": {
         "lastModified": 1692414505,
@@ -3429,6 +3449,7 @@
         "lanzaboote": "lanzaboote",
         "nixos-hardware": "nixos-hardware",
         "nixpkgs": "nixpkgs",
+        "nixpkgs-unfree": "nixpkgs-unfree",
         "nvf": "nvf",
         "probe-rs-rules": "probe-rs-rules",
         "stylix": "stylix"

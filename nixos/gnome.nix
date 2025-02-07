@@ -68,5 +68,8 @@
   systemd.services."getty@tty1".enable = false;
   systemd.services."autovt@tty1".enable = false;
 
+  # unlock automatically gnome keyring
+  security.pam.services.gdm.enableGnomeKeyring = true;
+
   programs.dconf.enable = true;
 }

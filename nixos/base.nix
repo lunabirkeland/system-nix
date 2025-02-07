@@ -1,5 +1,5 @@
 {
-  inputs,
+  lib,
   pkgs,
   vars,
   ...
@@ -25,6 +25,8 @@
     # since EDITOR may be used to edit some critical files
     variables.EDITOR = "nvim --clean";
   };
+
+  boot.initrd.systemd.enable = lib.mkForce true;
 
   # enable opengl
   hardware.graphics.enable = true;

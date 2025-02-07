@@ -71,6 +71,7 @@
     hunspellDicts.en-gb-large
     mpv
     element-desktop
+    tutanota-desktop
   ];
 
   services.easyeffects.enable = true;

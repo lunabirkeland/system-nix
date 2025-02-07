@@ -35,6 +35,11 @@
     enable = true;
   };
 
+  # prevent fingerprint reader lost on suspend
+  services.udev.extraRules = ''
+    ACTION=="add", SUBSYSTEM=="usb", DRIVERS=="usb", ATTRS{idVendor}=="06cb", ATTRS{idProduct}=="00f9", ATTR{power/persist}="1", RUN="${pkgs.coreutils}/bin/chmod 444 %S%p/../power/persist"
+  '';
+
   # enable firmware update daemon
   services.fwupd.enable = true;
 

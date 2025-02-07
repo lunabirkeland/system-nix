@@ -69,7 +69,6 @@
     hunspell
     hunspellDicts.nb-no
     hunspellDicts.en-gb-large
-    proton-pass
     mpv
     element-desktop
   ];

@@ -40,6 +40,13 @@
   programs.zsh.enable = true;
   programs.adb.enable = true;
 
+  programs.nh = {
+    enable = true;
+    clean.enable = true;
+    clean.extraArgs = "--keep-since 4d --keep 3";
+    flake = "/home/luna/system-nix";
+  };
+
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users = {
     defaultUserShell = pkgs.zsh;
@@ -59,10 +66,15 @@
       # Use cached hyprland builds to avoid rebuidling
       substituters = [
         "https://cache.nixos.org"
+        "https://nix-community.cachix.org"
+        "https://nvf.cachix.org"
       ];
       trusted-public-keys = [
         "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="
+        "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
+        "nvf.cachix.org-1:GMQWiUhZ6ux9D5CvFFMwnc2nFrUHTeGaXRlVBXo+naI="
       ];
+      download-buffer-size = 524288000;
     };
     registry."nixpkgs-unfree" = {
       from = {
@@ -70,6 +82,20 @@
         type = "indirect";
       };
       flake = inputs.nixpkgs-unfree;
+    };
+    registry."nixpkgs-unstable" = {
+      from = {
+        id = "nixpkgs-unstable";
+        type = "indirect";
+      };
+      flake = inputs.nixpkgs-unstable;
+    };
+    registry."nixpkgs-unstable-unfree" = {
+      from = {
+        id = "nixpkgs-unstable-unfree";
+        type = "indirect";
+      };
+      flake = inputs.nixpkgs-unstable-unfree;
     };
   };
 }

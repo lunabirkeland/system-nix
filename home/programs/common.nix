@@ -1,24 +1,16 @@
-{
-  config,
-  inputs,
-  pkgs,
-  username,
-  ...
-}: {
+{pkgs, ...}: {
   # enable user fonts
   fonts.fontconfig.enable = true;
 
   programs = {
     gpg.enable = true;
 
-    kitty.enable = true;
-
     zsh = {
       enable = true;
       autosuggestion.enable = true;
       enableCompletion = true;
       syntaxHighlighting.enable = true;
-      initExtra = "eval \"$(direnv hook zsh)\"\n";
+      initContent = "eval \"$(direnv hook zsh)\"\n";
     };
 
     direnv = {
@@ -27,29 +19,25 @@
       nix-direnv.enable = true;
     };
 
-    firefox.enable = true;
-
     starship = {
       enable = true;
       # custom settings
       enableZshIntegration = true;
-      settings =
-        {
-          add_newline = true;
-          aws.disabled = true;
-          gcloud.disabled = true;
-          #format = "$all"; # Remove this line to disable the default prompt format
-          palette = "catppuccin_mocha";
-        }
-        // builtins.fromTOML (builtins.readFile
-          (pkgs.fetchFromGitHub
-            {
-              owner = "catppuccin";
-              repo = "starship";
-              rev = "e99ba6b";
-              sha256 = "sha256-1w0TJdQP5lb9jCrCmhPlSexf0PkAlcz8GBDEsRjPRns=";
-            }
-            + /themes/mocha.toml));
+      settings = {
+        add_newline = true;
+        aws.disabled = true;
+        gcloud.disabled = true;
+      };
+    };
+
+    mpv = {
+      enable = true;
+      config = {
+        vo = "gpu-next";
+        target-colorspace-hint = true;
+        gpu-api = "vulkan";
+        gpu-context = "waylandvk";
+      };
     };
   };
 
@@ -65,26 +53,12 @@
     gcc
     nerd-fonts.symbols-only
     foliate
-    libreoffice-fresh
     hunspell
     hunspellDicts.nb-no
     hunspellDicts.en-gb-large
-    mpv
-    element-desktop
-    tutanota-desktop
   ];
 
   services.easyeffects.enable = true;
-
-  xdg.configFile."Element/config.json".source =
-    pkgs.fetchFromGitHub
-    {
-      owner = "catppuccin";
-      repo = "element";
-      rev = "ddced94";
-      sha256 = "8EP/IQW3rdtomHBfnQNIjGbiD6OapPzXPFLjziNDcmc=";
-    }
-    + /config.json;
 
   xdg.configFile."com.github.johnfactotum.Foliate/themes.json".source =
     pkgs.fetchFromGitHub

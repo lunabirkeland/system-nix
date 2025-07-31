@@ -14,6 +14,9 @@
   boot = {
     # switch to latest kernel for bluetooth issues fixed in 6.9.6
     kernelPackages = pkgs.linuxPackages_latest;
+    kernelParams = [
+      "amdgpu.dcdebugmask=0x8000"
+    ];
     loader = {
       systemd-boot.enable = lib.mkForce false;
       efi.canTouchEfiVariables = true;
@@ -34,11 +37,6 @@
   services.fprintd = {
     enable = true;
   };
-
-  # prevent fingerprint reader lost on suspend
-  services.udev.extraRules = ''
-    ACTION=="add", SUBSYSTEM=="usb", DRIVERS=="usb", ATTRS{idVendor}=="06cb", ATTRS{idProduct}=="00f9", ATTR{power/persist}="1", RUN="${pkgs.coreutils}/bin/chmod 444 %S%p/../power/persist"
-  '';
 
   # enable firmware update daemon
   services.fwupd.enable = true;

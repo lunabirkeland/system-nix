@@ -3,8 +3,8 @@
 with lib.hm.gvariant; {
   dconf.settings = {
     "org/gnome/shell" = {
-      favorite-apps = ["firefox.desktop" "org.gnome.Terminal.desktop"];
-      enabled-extensions = ["user-theme@gnome-shell-extensions.gcampax.github.com" "dash-to-dock@micxgx.gmail.com" "appindicatorsupport@rgcjonas.gmail.com"];
+      favorite-apps = ["librewolf.desktop" "org.gnome.Terminal.desktop"];
+      enabled-extensions = ["user-theme@gnome-shell-extensions.gcampax.github.com" "dash-to-dock@micxgx.gmail.com" "appindicatorsupport@rgcjonas.gmail.com" "Bluetooth-Battery-Meter@maniacx.github.com"];
     };
 
     "org/gnome/shell/extensions/dash-to-dock" = {

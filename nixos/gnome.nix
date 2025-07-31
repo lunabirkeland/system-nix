@@ -4,32 +4,6 @@
   vars,
   ...
 }: {
-  # nixpkgs.overlays = [
-  #   # GNOME 47: triple-buffering-v4-47
-  #   (final: prev: {
-  #     mutter = prev.mutter.overrideAttrs (old: {
-  #       src = prev.fetchFromGitLab {
-  #         domain = "gitlab.gnome.org";
-  #         owner = "vanvugt";
-  #         repo = "mutter";
-  #         rev = "triple-buffering-v4-47";
-  #         hash = "sha256-JaqJvbuIAFDKJ3y/8j/7hZ+/Eqru+Mm1d3EvjfmCcug=";
-  #       };
-  #       preConfigure = let
-  #         gvdb-src = prev.fetchFromGitLab {
-  #           domain = "gitlab.gnome.org";
-  #           owner = "GNOME";
-  #           repo = "gvdb";
-  #           rev = "2b42fc75f09dbe1cd1057580b5782b08f2dcb400";
-  #           hash = "sha256-CIdEwRbtxWCwgTb5HYHrixXi+G+qeE1APRaUeka3NWk=";
-  #         };
-  #       in ''
-  #         cp -a "${gvdb-src}" ./subprojects/gvdb
-  #       '';
-  #     });
-  #   })
-  # ];
-
   services.xserver = {
     # Enable the X11 windowing system.
     enable = true;
@@ -72,4 +46,15 @@
   security.pam.services.gdm.enableGnomeKeyring = true;
 
   programs.dconf.enable = true;
+
+  # allow kdeconnect/gsconnect
+  networking.firewall = rec {
+    allowedTCPPortRanges = [
+      {
+        from = 1714;
+        to = 1764;
+      }
+    ];
+    allowedUDPPortRanges = allowedTCPPortRanges;
+  };
 }

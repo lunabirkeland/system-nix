@@ -4,14 +4,18 @@
   nixConfig = {
     extra-substituters = [
       "https://nix-community.cachix.org"
+      "https://nvf.cachix.org"
     ];
     extra-trusted-public-keys = [
       "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
+      "nvf.cachix.org-1:GMQWiUhZ6ux9D5CvFFMwnc2nFrUHTeGaXRlVBXo+naI="
     ];
   };
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.05";
+
+    nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
 
     nixos-hardware.url = "github:NixOS/nixos-hardware";
 
@@ -20,8 +24,13 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    nixpkgs-unstable-unfree = {
+      url = "github:numtide/nixpkgs-unfree?ref=nixos-unstable";
+      inputs.nixpkgs.follows = "nixpkgs-unstable";
+    };
+
     home-manager = {
-      url = "github:nix-community/home-manager";
+      url = "github:nix-community/home-manager/release-25.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -31,13 +40,12 @@
     };
 
     stylix = {
-      url = "github:danth/stylix";
+      url = "github:nix-community/stylix/release-25.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
     nvf = {
-      url = "github:notashelf/nvf";
-      inputs.nixpkgs.follows = "nixpkgs";
+      url = "github:lunabirkeland/nvf/modules-nixpkgs-fix";
     };
 
     # probe-rs-rules to set recommended udev rules for probe-rs
@@ -61,6 +69,16 @@
         system = "x86_64-linux";
 
         modules = [
+          {
+            nixpkgs.overlays = [
+              (final: _: {
+                unstable = import inputs.nixpkgs-unstable {
+                  inherit (final.stdenv.hostPlatform) system;
+                  inherit (final) config;
+                };
+              })
+            ];
+          }
           nixos-hardware.nixosModules.lenovo-thinkpad-t14s-amd-gen4
           lanzaboote.nixosModules.lanzaboote
           ./hosts/caudatus

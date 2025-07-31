@@ -1,5 +1,4 @@
 {
-  config,
   lib,
   pkgs,
   ...
@@ -13,7 +12,6 @@
     };
   };
 
-  # stylix cursor not working well
   home.pointerCursor = lib.mkForce {
     name = "BreezeX-RosePine-Linux";
     package = pkgs.rose-pine-cursor;

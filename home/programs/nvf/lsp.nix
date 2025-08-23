@@ -4,8 +4,6 @@
       lspconfig.enable = true;
       formatOnSave = true;
       lspkind.enable = true;
-      lightbulb.enable = true;
-      lspsaga.enable = true;
       trouble.enable = true;
     };
 

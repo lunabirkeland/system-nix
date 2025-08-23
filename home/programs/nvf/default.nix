@@ -52,6 +52,7 @@ in {
         showmode = false;
         tabstop = 2;
         shiftwidth = 2;
+        wrap = false;
       };
 
       visuals = {
@@ -78,8 +79,13 @@ in {
       snippets.luasnip.enable = true;
 
       filetree = {
-        neo-tree = {
+        nvimTree = {
           enable = true;
+          setupOpts = {
+            hijack_cursor = true;
+            diagnostics.enable = true;
+            sort.folders_first = false;
+          };
         };
       };
 
@@ -123,6 +129,22 @@ in {
           hop.enable = true;
           leap.enable = true;
           precognition.enable = true;
+        };
+        snacks-nvim = {
+          enable = true;
+          setupOpts = {
+            bigfile.enabled = true;
+            explorer.enabled = true;
+            indent.enabled = true;
+            input.enabled = true;
+            picker.enabled = true;
+            notifier.enabled = true;
+            quickfile.enabled = true;
+            scope.enabled = true;
+            scroll.enabled = true;
+            statuscolumn.enabled = true;
+            words.enabled = true;
+          };
         };
       };
 

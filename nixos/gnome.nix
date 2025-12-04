@@ -4,20 +4,21 @@
   vars,
   ...
 }: {
-  services.xserver = {
-    # Enable the X11 windowing system.
-    enable = true;
-    # Enable the GNOME Desktop Environment.
-    displayManager = {
-      gdm.enable = true;
-    };
+  services = {
     desktopManager.gnome.enable = true;
-    # remove xterm
-    excludePackages = [pkgs.xterm];
-    # Configure keymap in X11
-    xkb = {
-      layout = "us";
-      variant = "altgr-intl";
+    displayManager.gdm.enable = true;
+
+    xserver = {
+      # Enable the X11 windowing system.
+      enable = true;
+      # Enable the GNOME Desktop Environment.
+      # remove xterm
+      excludePackages = [pkgs.xterm];
+      # Configure keymap in X11
+      xkb = {
+        layout = "us";
+        variant = "altgr-intl";
+      };
     };
   };
 

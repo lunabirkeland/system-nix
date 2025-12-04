@@ -27,7 +27,7 @@
     variables.EDITOR = "nvim --clean";
   };
 
-  boot.initrd.systemd.enable = lib.mkForce true;
+  boot.initrd.systemd.enable = true;
 
   # enable opengl
   hardware.graphics.enable = true;
@@ -39,11 +39,12 @@
 
   programs.zsh.enable = true;
   programs.adb.enable = true;
+  programs.firejail.enable = true;
 
   programs.nh = {
     enable = true;
     clean.enable = true;
-    clean.extraArgs = "--keep-since 4d --keep 3";
+    clean.extraArgs = "--keep-since 14d --keep 3";
     flake = "/home/luna/system-nix";
   };
 

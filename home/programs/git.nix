@@ -3,9 +3,11 @@
 
   programs.git = {
     enable = true;
-    userName = "lunabirkeland";
-    userEmail = "lunabirkeland@gmail.com";
-    extraConfig = {
+    settings = {
+      user = {
+        name = "lunabirkeland";
+        email = "lunabirkeland@gmail.com";
+      };
       core = {
         editor = "nvim";
       };

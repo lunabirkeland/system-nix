@@ -49,13 +49,14 @@
     ripgrep
     noto-fonts
     noto-fonts-cjk-sans
-    noto-fonts-emoji
+    noto-fonts-color-emoji
     gcc
     nerd-fonts.symbols-only
     foliate
     hunspell
     hunspellDicts.nb-no
     hunspellDicts.en-gb-large
+    pkgs.unstable.bitwarden-desktop
   ];
 
   services.easyeffects.enable = true;

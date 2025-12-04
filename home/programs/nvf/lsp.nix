@@ -1,6 +1,7 @@
 {
   programs.nvf.settings.vim = {
     lsp = {
+      enable = true;
       lspconfig.enable = true;
       formatOnSave = true;
       lspkind.enable = true;
@@ -8,7 +9,6 @@
     };
 
     languages = {
-      enableLSP = true;
       enableFormat = true;
       enableTreesitter = true;
       enableExtraDiagnostics = true;
